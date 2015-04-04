@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en" data-ng-app="demo">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>User Registration</title>
+	<link rel="stylesheet" href="less/css/bootstrap.css">
+	<link rel="stylesheet" href="less/css/custom.css">
+	<!-- <link rel="stylesheet" href="less/css/growl.css"> -->
+	<style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+    </style>
+	<link href="less/css/bootstrap.css" rel="stylesheet">
+</head>
+<body>
+	<div growl></div>
+	
+	<div data-ng-view class="container"></div>
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="bower_components/angular-route/angular-route.js"></script>
+	<script src="bower_components/angular-resource/angular-resource.js"></script>
+	<script src="bower_components/angular-growl/build/angular-growl.js"></script>
+	<script src= "http://ajax.googleapis.com/ajax/libs/angularjs/1.3.14/angular.min.js"></script>
+	<!-- //<script src="less/js/growl.js"></script> -->
+	<script src="app/app.js"></script>
+	<script src="app/userCtrl.js"></script>
+</body>
+</html>
