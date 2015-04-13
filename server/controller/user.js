@@ -25,7 +25,7 @@ exports.create = {
                     id: user._id
                 };
                 // Common.sentMailVerificationLink(user,Jwt.sign(tokenData, privateKey));
-                reply("Please confirm your email id by clicking on link in email");
+                reply("sucessfully registered");
             } else {
                 if (11000 === err.code || 11001 === err.code) {
                     reply(Boom.forbidden("please provide another user email"));

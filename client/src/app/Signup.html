@@ -1,0 +1,145 @@
+<div  style="min-height:767px;">
+<!-- BEGIN LOGO -->
+<div class="logo">
+	<a href="index.html">
+	<!-- <img src="../../assets/admin/layout/img/logo-big.png" alt=""/> -->
+	</a>
+</div>
+<!-- END LOGO -->
+<!-- BEGIN SIDEBAR TOGGLER BUTTON -->
+<div>
+</div>
+<!-- END SIDEBAR TOGGLER BUTTON -->
+<!-- BEGIN LOGIN -->
+<div class="content">
+	
+	<!-- BEGIN REGISTRATION FORM -->
+	<div>
+	<form class="" name="signupForm" ng-submit="signUpProcess(signupForm,isSameEmail)" novalidate>
+		<h3>Sign Up</h3>
+		<p>
+			 Enter your personal details below:
+		</p>
+		<div class="form-group">
+			<label class="control-label visible-ie8 visible-ie9">First Name</label>
+			<div class="input-icon">
+				<i class="fa fa-font"></i>
+				<input class="form-control placeholder-no-fix" type="text" ng-model="registration.firstName" placeholder="FIrst Name" name="firstName" ng-minlength="3" ng-maxlength="25" ng-pattern="/^[a-zA-Z ]*$/"  required/>
+			</div>
+		</div>
+		<div class="error" ng-show="submitted &&  signupForm.firstName.$invalid">Invalid:
+                    <span ng-show="signupForm.firstName.$error.required">Tell us your First Name</span>
+                      <span ng-show="signupForm.firstName.$error.minlength">First name should be minimum of 3 characters</span>
+                      <span ng-show="signupForm.firstName.$error.maxlength">First name should be maximum of 25 characters</span>
+                      <span ng-show="signupForm.firstName.$error.pattern">First Name should not have special character or digit</span>
+                  </div>
+      	
+		<div class="form-group">
+			<label class="control-label visible-ie8 visible-ie9">Last Name</label>
+			<div class="input-icon">
+				<i class="fa fa-font"></i>
+				<input class="form-control placeholder-no-fix" type="text" ng-model="registration.lastName" placeholder="Last Name" name="lastName" ng-minlength="3" ng-maxlength="25" ng-pattern="/^[a-zA-Z ]*$/" required/>
+			</div>
+		</div>
+		<div class="error" ng-show="submitted  && signupForm.lastName.$invalid">Invalid:
+                    <span ng-show="signupForm.lastName.$error.required">Tell us your Last Name</span>
+                      <span ng-show="signupForm.lastName.$error.minlength">Last name should be minimum of 3 characters</span>
+                      <span ng-show="signupForm.lastName.$error.maxlength">Last name should be maximum of 25 characters</span>
+                      <span ng-show="signupForm.lastName.$error.pattern">Last Name should not have special character or digit</span>
+                  </div>
+		<p>
+			 Enter your account details below:
+		</p>
+		<div class="form-group">
+			<!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+			<label class="control-label visible-ie8 visible-ie9">Email </label>
+			<div class="input-icon">
+				<i class="fa fa-envelope"></i>
+				<input class="form-control placeholder-no-fix" type="email" ng-model="registration.email" placeholder="Email" name="email" required />
+			</div>
+		</div>
+        
+	      <div class="error" ng-show=" submitted  && signupForm.email.$invalid">Invalid:
+	            <span ng-show="signupForm.email.$error.required">Email Field is required</span>
+	            <span ng-show="signupForm.email.$error.email ">Tell us your Valid Email</span>
+	      </div>
+        
+        <div class="form-group">
+			<label class="control-label visible-ie8 visible-ie9">Password</label>
+			<div class="input-icon">
+				<i class="fa fa-lock"></i>
+				<input class="form-control placeholder-no-fix" type="password" autocomplete="off" id="register_password" placeholder="Password" name="password" ng-model="registration.password" ng-minlength="6" ng-maxlength="25" ng-pattern="/(?=.*\d)(?=.*[a-z]).{6,}/" required />
+			</div>
+			<div class="error" ng-show="submitted  && signupForm.password.$invalid">Invalid:
+            	<span ng-show="signupForm.password.$error.required">Set your password</span>
+              <span ng-show="signupForm.password.$error.maxlength">Password should be maximum of 25 characters</span>
+              <span ng-show="signupForm.password.$error.pattern">Password should have at least six characters, at least one number, one lowercase and one uppercase letter<span> 
+          </div>
+
+
+		<!-- </div> -->
+		<div class="form-group">
+			<label class="control-label visible-ie8 visible-ie9">Re-type Your Password</label>
+			<div class="controls">
+				<div class="input-icon">
+					<i class="fa fa-check"></i>
+					<input class="form-control placeholder-no-fix" type="password" autocomplete="off" ng-model="confirmHashedPassword" placeholder="Re-type Your Password" name="confirmPassword" required/>
+				</div>
+			</div>
+		</div>
+        
+        <div class="error" ng-show="(submitted && registration.password !==confirmHashedPassword)">
+                <span>Password is not matching</span>    
+                  
+        </div>
+        <!-- <div class="form-group" id="capture">
+			<div class="result">
+                
+            </div>
+		</div> -->
+                      
+          <!--   <div class="form-group">
+			<label>
+			<input type="checkbox" name="tnc"  ng-model="followTerm"/> I agree to the <a href="#">
+			Terms of Service </a>
+			and <a href="#">
+			Privacy Policy </a>
+			</label>
+			<div class="error" ng-show="submitted && !followTerm">
+                <span>Please click on check box to confirm.</span>
+                
+            </div>
+			<div id="register_tnc_error">
+			</div>
+		</div> -->
+		<div class="form-actions">
+			<!-- <button id="register-back-btn" type="button" class="btn" ng-click="redirectToLogin()">
+			<i class="m-icon-swapleft"></i> Back </button> -->
+			<button type="submit" id="register-submit-btn" class="btn green pull-right" >
+			Sign Up <i class="m-icon-swapright m-icon-white"></i>
+			</button>
+		</div>
+	</form>
+	</div>
+	<!-- END REGISTRATION FORM -->
+</div>
+<!-- END LOGIN -->
+<!-- BEGIN COPYRIGHT -->
+<!-- <div class="copyright">
+	 2014 &copy; GXP
+</div> -->
+</div>
+<style>
+    .error{
+        color:red;
+        margin-bottom:10px;
+    }
+    canvas{
+    	width:300px !important;
+    }
+</style>
+<script>
+$(function() {
+  $("canvas").css("width","300px !important");
+});
+</script>

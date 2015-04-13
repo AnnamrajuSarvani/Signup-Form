@@ -2,46 +2,75 @@
 
 <div data-ng-controller="userCtrl">
 
-    <h2>SignUp here</h2>
+    <h2>SignUp Here</h2>
 
-    <form class="form-horizontal" name="userForm" novalidate ng-submit="submit()">
+    <form class="form-horizontal" name="signupForm" novalidate ng-submit="submit()">
     
         <!-- NAME INPUT -->
             <div id="form-signup">
             <div class="form-group">
                 <label>First Name</label>
-                <input type="text" class="form-control" name="fname" ng-model="formData.fname" required>
-                <!-- <span style="color:red" ng-show="submitted &&userForm.formData.fname.$dirty && userForm.formData.fname.$invalid"> -->
-                <span ng-show="submitted && userForm.fname.$error.required">First Name is required.</span>
-                </span>
+                <input type="text" class="form-control" name="fname" placeholder="First Name" ng-model="formData.fname" ng-minlength="6" ng-maxlength="25" required>                
             </div>
+            <div class="error" ng-show="submitted &&  signupForm.fname.$invalid">Invalid:
+                    <span ng-show="signupForm.fname.$error.required">Tell us your First Name</span>
+                      <span ng-show="signupForm.fname.$error.minlength">First name should be minimum of 3 characters</span>
+                      <span ng-show="signupForm.fname.$error.maxlength">First name should be maximum of 25 characters</span>
+                      <!-- <span ng-show="signupForm.fname.$error.pattern">First Name should not have special character or digit</span> -->
+                  </div>
+
             <br/>
            <div class="form-group">
                 <label>Last Name</label>
-                <input type="text" class="form-control" name="lname" ng-model="formData.lname" required>
-                <span style="color:red" ng-show="submitted &&userForm.formData.lname.$dirty && userForm.formData.lname.$invalid">
-                <span ng-show="submitted && userForm.lname.$error.required">Last Name is required.</span>
-                </span>
+                <input type="text" class="form-control" name="lname" ng-model="formData.lname" placeholder="Last Name" ng-minlength="6" ng-maxlength="25"  required>                
+            </div>
+            <div class="error" ng-show="submitted  && signupForm.lname.$invalid">Invalid:
+                    <span ng-show="signupForm.lname.$error.required">Tell us your Last Name</span>
+                      <span ng-show="signupForm.lname.$error.minlength">Last name should be minimum of 3 characters</span>
+                      <span ng-show="signupForm.lname.$error.maxlength">Last name should be maximum of 25 characters</span>
+                      <!-- <span ng-show="signupForm.lname.$error.pattern">Last Name should not have special character or digit</span> -->
             </div>
             <br/>
             
 
             <div class="form-group">
                 <label>Email</label>
-                <input type="email" class="form-control" name="email" ng-model="formData.email" required>
-                <span style="color:red" ng-show=" submitted &&userForm.formData.email.$dirty && userForm.formData.email.$invalid">
-                <span ng-show="submitted && userForm.formData.email.$error.required">Email is required.</span>
-                <span ng-show="userForm.email.$error.email">Invalid email address.</span>
-                </span>
+                <input type="email" class="form-control" name="email" ng-model="formData.email" placeholder="email" required>
             </div>
+
+            <div class="error" ng-show=" submitted  && signupForm.email.$invalid">Invalid:
+                        <span ng-show="signupForm.email.$error.required">Email Field is required</span>
+                        <span ng-show="signupForm.email.$error.email ">Tell us your Valid Email</span>
+            </div>
+
             <br/>
             <div class="form-group">
                 <label>password</label>
-                <input type="password" class="form-control" name="password" ng-model="formData.password" type="password" required>
-                <span style="color:red" ng-show="userForm.formData.password.$dirty && userForm.formData.password.$invalid">
-                <span ng-show="submitted && userForm.password.$error.required">password is required.</span>
-                </span>
+                <input type="password" class="form-control" name="password" ng-model="formData.password" type="password" ng-minlength="6" ng-maxlength="25" ng-pattern="/(?=.*\d)(?=.*[a-z]).{6,}/" required placeholder="password">
             </div>
+
+            <div class="error" ng-show="submitted  && signupForm.password.$invalid">Invalid:
+                <span ng-show="signupForm.password.$error.required">Set your password</span>
+                  <!-- <span ng-show="signupForm.password.$error.minlength">Password shold be minimum of 6 character</span> -->
+                  <span ng-show="signupForm.password.$error.maxlength">Password should be maximum of 25 characters</span>
+                  <span ng-show="signupForm.password.$error.pattern">Password should have at least six characters, at least one number, one lowercase and one uppercase letter<span> 
+              </div>
+             <br/>
+            <div class="form-group">
+                <label>Re-type password</label>
+                 <input class="form-control placeholder-no-fix" type="password" autocomplete="off" ng-model="confirmHashedPassword" placeholder="Re-type Your Password" name="confirmPassword" required/>           
+            </div>
+            
+             
+           
+                <!-- <span>Password is not matching</span>     -->
+                  
+             </div>
+             <div class="error" ng-show="(submitted && formData.password !==confirmHashedPassword)">
+                <span>Password is not matching</span>    
+                  
+            </div>
+
             <br/>
             <button type="submit">Submit</button>
         </div>
@@ -61,3 +90,9 @@
    
     
 </div>
+
+<style type="text/css">
+.error{
+   color:red; 
+}
+</style>
